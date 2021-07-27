@@ -1,0 +1,30 @@
+<h3 class="mt-3"></h3>
+<form [formGroup]="agregarComentario" (ngSubmit)="agregar()" >
+    <!-- (formGruup) arriba estamos enlazando el ts con el forom.. para validarlo -->
+    <div class="mb-3">
+        <label for="titulo" class="form-label">Titulo</label>
+        <input formControlName="titulo" type="text" class="form-control" id="titulo" autocomplete="off">
+        <span *ngIf="agregarComentario.get('titulo')?.invalid && agregarComentario.get('titulo')?.touched"  class="text-danger">
+            El <strong>titulo</strong> es requerido
+        </span>
+    </div>
+    <div class="mb-3">
+        <label for="Creador" class="form-label">Creador</label>
+        <input formControlName="creador" type="text" class="form-control" id="Creador" autocomplete="off">
+        <span *ngIf="agregarComentario.get('creador')?.invalid && agregarComentario.get('creador')?.touched"  class="text-danger">
+            El <strong>creador</strong> es requerido
+        </span>
+    </div>
+    <div class="mb-3">
+        <label for="Texto" class="form-label">Texto</label>
+        <textarea formControlName="texto" class="form-control" id="Texto" rows="5" autocomplete="off"></textarea>
+        <span *ngIf="agregarComentario.get('texto')?.invalid && agregarComentario.get('texto')?.touched"  class="text-danger">
+            El <strong>texto</strong> es requerido
+        </span>
+      </div>
+      <button [disabled]="agregarComentario?.invalid" type="submit" class="btn btn-primary float-end">Aceptar</button>
+      <!-- lo de arriba es para desavilitar el boton en caso que el agg comentario sea invalido -->
+      <button type="button" routerLink="/" class="btn btn-secondary">Volver</button>
+
+
+</form>
